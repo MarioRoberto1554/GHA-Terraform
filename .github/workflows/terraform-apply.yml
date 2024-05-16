@@ -3,7 +3,7 @@ name: "Terraform Apply"
 on:
   push:
     branches:
-      - main
+      - development
 
 env:
   TF_CLOUD_ORGANIZATION: "RealLifeAPP"
@@ -44,4 +44,3 @@ jobs:
           run: ${{ steps.apply-run.outputs.run_id }}
           comment: "Apply Run from GitHub Actions CI ${{ github.sha }}"
 
-          
