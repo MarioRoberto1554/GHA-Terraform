@@ -1,9 +1,12 @@
 name: "Terraform Apply"
 
 on:
-  push:
+  pull_request:
+    types:
+      - closed
     branches:
-      - main
+      - master
+
 
 env:
   TF_CLOUD_ORGANIZATION: "RealLifeAPP"
@@ -13,7 +16,7 @@ env:
 
 jobs:
   terraform:
-    if: github.repository != 'hashicorp-education/learn-terraform-github-actions'
+    if: github.event.pull_request.merged == true
     name: "Terraform Apply"
     runs-on: ubuntu-latest
     permissions:
